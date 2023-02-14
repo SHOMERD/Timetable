@@ -4,7 +4,7 @@
              x:Class="Timetable.Views.NotesPage">
     <ContentPage.ToolbarItems 
         BackgroundColor="Aqua">
-        <ToolbarItem Text="Ad"
+        <ToolbarItem Text="Add"
                      Clicked="OnItemAdded">
         </ToolbarItem>
     </ContentPage.ToolbarItems>
@@ -16,17 +16,19 @@
             <DataTemplate>
                 <ViewCell>
                     <StackLayout Margin="20,0,0,0"
-                                 Orientation="Vertical"
+                                 Orientation="Horizontal"
                                  HorizontalOptions="FillAndExpand">
                         <Label Text="{Binding Text}"
                                VerticalTextAlignment="Center"
                                HorizontalOptions="StartAndExpand" />
-                        <Label Text="{Binding Time}"
+                        <Label Text="{Binding StrinrTime}"
                                VerticalTextAlignment="Center"
-                              HorizontalOptions="StartAndExpand" />
+                               HorizontalOptions="End"/>
                     </StackLayout>
                 </ViewCell>
             </DataTemplate>
         </ListView.ItemTemplate>
     </ListView>
+
 </ContentPage>
+    

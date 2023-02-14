@@ -5,14 +5,65 @@
              Title="{Binding Text}">
     <StackLayout Margin="20"
                  VerticalOptions="StartAndExpand">
-        <Label Text="Notes" />
-        <Entry Text="{Binding Text}" />
-        <TimePicker x:Name="timePicker" Time="2:00:00"></TimePicker>
-        <Button Text="Save"
-                Clicked="OnSaveClicked" />
-        <Button Text="Delete"
-                Clicked="OnDeleteClicked" />
-        <Button Text="Cancel"
-                Clicked="OnCancelClicked" />
+        <Label Text="Notes"/>
+        <Entry Text="{Binding Text}"/>
+        <Label Text=" "/>
+        <TimePicker x:Name="timePicker" Time="8:00:00" ></TimePicker>
+        <Label Text=" " />
+        
+        
+        <StackLayout
+             HorizontalOptions="StartAndExpand">
+            <StackLayout
+                Orientation="Vertical">
+                <StackLayout
+                Orientation="Horizontal">
+                    <Switch IsToggled="{Binding Monday}" />
+                    <Label Text="Понедельник"  />
+                </StackLayout>
+                <StackLayout
+                    Orientation="Horizontal">
+                    <Switch IsToggled="{Binding Tuesday}" />
+                    <Label Text="Вторник"     />
+                </StackLayout>
+                <StackLayout
+                    Orientation="Horizontal">
+                    <Switch IsToggled="{Binding Wednesday}" />
+                    <Label Text="Среда" />
+                </StackLayout>
+                <StackLayout
+                    Orientation="Horizontal">
+                    <Switch IsToggled="{Binding Thursday}" />
+                    <Label Text="Четверг" />
+                </StackLayout>
+                <StackLayout
+                    Orientation="Horizontal">
+                    <Switch IsToggled="{Binding Friday}" />
+                    <Label Text="Пятница"  />
+                </StackLayout>
+                <StackLayout
+                    Orientation="Horizontal">
+                    <Switch IsToggled="{Binding Saturday}" />
+                    <Label Text="Суббота"  />
+                </StackLayout>
+                <StackLayout
+                    Orientation="Horizontal">
+                    <Switch IsToggled="{Binding Sunday}" />
+                    <Label Text="Воскресенье" />
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+        
+        
+        <StackLayout
+            Orientation="Horizontal"
+            HorizontalOptions="CenterAndExpand">
+            <Button Text="Save"
+                    Clicked="OnSaveClicked" />
+            <Button Text="Delete"
+                    Clicked="OnDeleteClicked" />
+            <Button Text="Cancel"
+                    Clicked="OnCancelClicked" />
+        </StackLayout>
     </StackLayout>
 </ContentPage>

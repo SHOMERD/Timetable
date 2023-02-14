@@ -26,6 +26,7 @@ namespace Timetable.Views
         {
             Note todoItem = (Note)BindingContext;
             todoItem.Time = DateTime.Today + timePicker.Time;
+            todoItem.StrinrTime = todoItem.Time.ToShortTimeString();
             NotesDB database = await NotesDB.Instance;
             await database.SaveItemAsync(todoItem);
             await Navigation.PopAsync();
