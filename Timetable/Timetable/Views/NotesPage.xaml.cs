@@ -7,7 +7,7 @@ namespace Timetable.Views
 {
     public partial class NotesPage : ContentPage
     {
-        public NotesPage()
+        public NotesPage(int l = 0)
         {
             InitializeComponent();
         }

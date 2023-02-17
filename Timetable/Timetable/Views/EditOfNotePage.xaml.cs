@@ -27,6 +27,7 @@ namespace Timetable.Views
             Note todoItem = (Note)BindingContext;
             todoItem.Time = DateTime.Today + timePicker.Time;
             todoItem.StrinrTime = todoItem.Time.ToShortTimeString();
+            todoItem.DayOfTheWeek = DayPicker.SelectedIndex;
             NotesDB database = await NotesDB.Instance;
             await database.SaveItemAsync(todoItem);
             await Navigation.PopAsync();
@@ -44,5 +45,6 @@ namespace Timetable.Views
         {
             await Navigation.PopAsync();
         }
+
     }
 }

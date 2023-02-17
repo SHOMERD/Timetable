@@ -3,6 +3,8 @@ using System.Threading.Tasks;
 using SQLite;
 using Todo;
 using Timetable.Models;
+using System.Collections;
+using System;
 
 namespace Timetable.Data
 {
@@ -26,6 +28,12 @@ namespace Timetable.Data
         {
             return Database.Table<Note>().ToListAsync();
         }
+
+        //public Task<List<Note>> GetDailyItemsAsync()
+        //{
+        //    var stocksStartingWithA = Database.QueryAsync<Note>("SELECT * FROM Items WHERE Monday = ?", 1);
+        //    return stocksStartingWithA;
+        //}
 
 
         public Task<Note> GetItemAsync(int id)
