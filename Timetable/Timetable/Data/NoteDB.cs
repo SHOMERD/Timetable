@@ -4,7 +4,9 @@ using SQLite;
 using Todo;
 using Timetable.Models;
 using System.Collections;
+
 using System;
+using System.Diagnostics;
 
 namespace Timetable.Data
 {
@@ -26,14 +28,20 @@ namespace Timetable.Data
 
         public Task<List<Note>> GetItemsAsync()
         {
-            return Database.Table<Note>().ToListAsync();
+            Task<List<Note>> f = Database.Table<Note>().ToListAsync();
+            Console.WriteLine(f);
+            return f;
         }
 
-        //public Task<List<Note>> GetDailyItemsAsync()
-        //{
-        //    var stocksStartingWithA = Database.QueryAsync<Note>("SELECT * FROM Items WHERE Monday = ?", 1);
-        //    return stocksStartingWithA;
-        //}
+        public Task<List<Note>> GetDailyItemsAsync(int Day)
+        {
+            if (Day < 0 )
+            {
+                for (; Day < 0; Day += 7);
+            }
+            Day = (Day + 7)%7-1;
+            return Database.QueryAsync<Note>($"SELECT * FROM Note WHERE DayOfTheWeek = ?", Day); ;
+        }
 
 
         public Task<Note> GetItemAsync(int id)

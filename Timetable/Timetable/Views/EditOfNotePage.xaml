@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Timetable.Views.EditOfNotePage"          
-             Title="{Binding Text}">
+             x:Class="Timetable.Views.EditOfNotePage">
     <StackLayout Margin="20"
                  VerticalOptions="StartAndExpand">
         <Label Text="Дело:"/>
-        <Entry Text="{Binding Text}"/>
+        <Entry  x:Name="NoteText"
+                Text="{Binding Text}"/>
         <Label Text=" "/>
         <TimePicker x:Name="timePicker" Time="8:00:00" ></TimePicker>
         <Label Text=" " />

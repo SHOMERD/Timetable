@@ -20,6 +20,7 @@ namespace Timetable.Views
         public EditOfNotePage()
         {
             InitializeComponent();
+           
         }
 
         async void OnSaveClicked(object sender, EventArgs e)
@@ -46,5 +47,14 @@ namespace Timetable.Views
             await Navigation.PopAsync();
         }
 
+        protected override void OnBindingContextChanged()
+        {
+            Note todoItem = (Note)BindingContext;
+            if (todoItem != null)
+            {
+                DayPicker.SelectedIndex = todoItem.DayOfTheWeek;
+                NoteText.Text = todoItem.Text;
+            }
+        }
     }
 }

@@ -11,7 +11,7 @@ namespace Timetable
     {
         public App()
         {
-            MainPage = new NavigationPage(new NotesPage());
+            MainPage = new NavigationPage(new NotesPage((int)DateTime.Now.DayOfWeek));
         }
 
         protected override void OnStart()

@@ -7,8 +7,11 @@ namespace Timetable.Views
 {
     public partial class NotesPage : ContentPage
     {
+        public int DayOfTheWeek;
+
         public NotesPage(int l = 0)
         {
+            DayOfTheWeek = l;
             InitializeComponent();
         }
         protected override async void OnAppearing()
@@ -16,7 +19,7 @@ namespace Timetable.Views
             base.OnAppearing();
 
             NotesDB database = await NotesDB.Instance;
-            listView.ItemsSource = await database.GetItemsAsync();
+            listView.ItemsSource = await database.GetDailyItemsAsync(DayOfTheWeek);
         }
 
         async void OnItemAdded(object sender, EventArgs e)
