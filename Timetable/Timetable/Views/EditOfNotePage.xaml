@@ -8,7 +8,7 @@
         <Entry  x:Name="NoteText"
                 Text="{Binding Text}"/>
         <Label Text=" "/>
-        <TimePicker x:Name="timePicker" Time="8:00:00" ></TimePicker>
+        <TimePicker x:Name="timePicker" Time="22:00:00" ></TimePicker>
         <Label Text=" " />
 
 

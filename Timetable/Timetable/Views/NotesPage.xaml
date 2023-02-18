@@ -4,10 +4,18 @@
              x:Class="Timetable.Views.NotesPage">
     <ContentPage.ToolbarItems 
         BackgroundColor="Aqua">
-        <ToolbarItem Text="Add"
+        <ToolbarItem Text="❮"
+                     Clicked="LastDay">
+        </ToolbarItem>
+        <ToolbarItem x:Name="Day"
                      Clicked="OnItemAdded">
         </ToolbarItem>
+        <ToolbarItem Text="❯"
+                     Clicked="NextDay">
+        </ToolbarItem>
     </ContentPage.ToolbarItems>
+
+
     <ListView x:Name="listView"
               Margin="20"
               ItemSelected="OnListItemSelected"
@@ -15,15 +23,17 @@
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>
-                    <StackLayout Margin="20,0,0,0"
+                    <StackLayout Orientation="Vertical">
+                        <StackLayout Margin="0,0,0,0"
                                  Orientation="Horizontal"
                                  HorizontalOptions="FillAndExpand">
-                        <Label Text="{Binding Text}"
+                            <Label Text="{Binding Text}"
                                VerticalTextAlignment="Center"
                                HorizontalOptions="StartAndExpand" />
-                        <Label Text="{Binding StrinrTime}"
+                            <Label Text="{Binding StrinrTime}"
                                VerticalTextAlignment="Center"
                                HorizontalOptions="End"/>
+                        </StackLayout>
                     </StackLayout>
                 </ViewCell>
             </DataTemplate>

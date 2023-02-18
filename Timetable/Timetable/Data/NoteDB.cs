@@ -40,7 +40,7 @@ namespace Timetable.Data
                 for (; Day < 0; Day += 7);
             }
             Day = (Day + 7)%7-1;
-            return Database.QueryAsync<Note>($"SELECT * FROM Note WHERE DayOfTheWeek = ?", Day); ;
+            return Database.QueryAsync<Note>($"SELECT * FROM Note WHERE DayOfTheWeek = ?  ORDER BY Time", Day); ;
         }
 
 
