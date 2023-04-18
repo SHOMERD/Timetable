@@ -2,20 +2,44 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Timetable.Views.NotesPage">
-    <ContentPage.ToolbarItems 
-        BackgroundColor="Aqua">
-        <ToolbarItem Text="❮"
-                     Clicked="LastDay">
-        </ToolbarItem>
-        <ToolbarItem x:Name="Day"
-                     Clicked="OnItemAdded">
-        </ToolbarItem>
-        <ToolbarItem Text="❯"
-                     Clicked="NextDay">
-        </ToolbarItem>
-    </ContentPage.ToolbarItems>
 
 
+
+    <NavigationPage.TitleView
+        BackgroundColor ="Gold">
+        <StackLayout Orientation="Horizontal"
+                     HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand"
+                     BackgroundColor ="Gold">
+
+            <Button Text="❮"
+                   HorizontalOptions="StartAndExpand"
+                   VerticalOptions="CenterAndExpand"
+                   FontSize="20"
+                    Background="Transparent"
+                    Clicked="LastDay"/>
+
+            <Button x:Name="Day"
+                    Text="Чтото работает неправельно" 
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="CenterAndExpand"
+                   FontSize="20"
+                    Background="Transparent"
+                    Clicked="OnItemAdded"/>
+
+            <Button Text="❯"
+                    HorizontalOptions="EndAndExpand"
+                    VerticalOptions="CenterAndExpand"
+                    FontSize="20"
+                    Background="Transparent"
+                    Clicked="NextDay"
+                    />
+            
+        </StackLayout>
+    </NavigationPage.TitleView>
+
+    
+    
     <ListView x:Name="listView"
               Margin="20"
               ItemSelected="OnListItemSelected"
@@ -23,10 +47,11 @@
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>
-                    <StackLayout Orientation="Vertical">
+                    <StackLayout Orientation="Vertical"
+                                 BackgroundColor ="#D1CBE7">
                         <StackLayout Margin="0,0,0,0"
                                  Orientation="Horizontal"
-                                 HorizontalOptions="FillAndExpand">
+                                 HorizontalOptions="CenterAndExpand">
                             <Label Text="{Binding Text}"
                                VerticalTextAlignment="Center"
                                HorizontalOptions="StartAndExpand" />
@@ -39,6 +64,8 @@
             </DataTemplate>
         </ListView.ItemTemplate>
     </ListView>
+
+     
 
 </ContentPage>
     
