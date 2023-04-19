@@ -8,7 +8,12 @@
         <Entry  x:Name="NoteText"
                 Text="{Binding Text}"/>
         <Label Text=" "/>
-        <TimePicker x:Name="timePicker" Time="22:00:00" ></TimePicker>
+        <Switch x:Name="WithТotice" IsToggled="False"></Switch>
+        <Label Text=" "/>
+        <TimePicker x:Name="StartTimePicker" Time="22:00:00" ></TimePicker>
+        <Label Text=" " />
+        <Label Text=" "/>
+        <TimePicker x:Name="EndTimePicker" Time="22:00:00" ></TimePicker>
         <Label Text=" " />
 
 
@@ -26,6 +31,16 @@
             </Picker>
         </StackLayout>
 
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Сделать запланированную запись"/>
+            <Switch x:Name="itsSpecialNote" IsToggled="False"></Switch>
+        </StackLayout>
+
+        <StackLayout IsVisible = "{Binding Source={x:Reference itsSpecialNote}, Path=IsToggled}">
+            <StackLayout>
+                <DatePicker x:Name="DateOfTasc"></DatePicker>
+            </StackLayout>
+        </StackLayout>
 
         <StackLayout
             Orientation="Horizontal"

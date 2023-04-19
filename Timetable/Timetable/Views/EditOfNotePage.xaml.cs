@@ -26,10 +26,22 @@ namespace Timetable.Views
         async void OnSaveClicked(object sender, EventArgs e)
         {
             Note todoItem = (Note)BindingContext;
-            todoItem.Time = DateTime.MinValue + timePicker.Time;
-            todoItem.StrinrTime = todoItem.Time.ToShortTimeString();
-            todoItem.DayOfTheWeek = DayPicker.SelectedIndex;
+
+            todoItem.StartTime = DateTime.MinValue + StartTimePicker.Time;
+            todoItem.EndTime = DateTime.MinValue + EndTimePicker.Time;
+            todoItem.StringStartTime = todoItem.StartTime.ToShortTimeString();
+
+            todoItem.StringEndTime = todoItem.EndTime.ToShortTimeString();
+            todoItem.DayOfTheWeek = (DayPicker.SelectedIndex + 1) % 7 ;
+
             todoItem.Text = NoteText.Text;
+
+            todoItem.WithТotice = WithТotice.IsToggled;
+
+            //!!!!!!!!!!!!!!!!!!!!
+            todoItem.IsDelayed = itsSpecialNote.IsToggled;
+
+
             NotesDB database = await NotesDB.Instance;
             await database.SaveItemAsync(todoItem);
             await Navigation.PopAsync();
@@ -50,8 +62,10 @@ namespace Timetable.Views
 
         protected override void OnBindingContextChanged()
         {
+           
             Note todoItem = (Note)BindingContext;
-            if (todoItem.StrinrTime != null)
+            //!!!!!!!!!!!!!!!!!!!!!!!!!!
+            if (todoItem.StartTime != null)
             {
                 DayPicker.SelectedIndex = todoItem.DayOfTheWeek;
                 NoteText.Text = todoItem.Text;
