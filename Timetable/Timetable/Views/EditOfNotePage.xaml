@@ -8,37 +8,39 @@
         <Entry  x:Name="NoteText"
                 Text="{Binding Text}"/>
         <Label Text=" "/>
-        <Switch x:Name="WithТotice" IsToggled="False"></Switch>
+        <Switch x:Name="WithТotice" IsToggled="{Binding WithТotice}"/>
         <Label Text=" "/>
-        <TimePicker x:Name="StartTimePicker" Time="10:00:00" ></TimePicker>
+        <TimePicker  x:Name="StartTimePicker" Time="10:00:00"/>
         <Label Text=" " />
         <Label Text=" "/>
-        <TimePicker x:Name="EndTimePicker" Time="22:00:00" ></TimePicker>
+        <TimePicker x:Name="EndTimePicker" Time="22:00:00"/>
         <Label Text=" " />
 
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Сделать запланированную запись"/>
+            <Switch x:Name="itsSpecialNote" Toggled="ChangedTypeOfNote" IsToggled="{Binding IsDelayed}" ></Switch>
+        </StackLayout>
 
-        <StackLayout>
-            <Picker  x:Name = "DayPicker" Title="День недели">
+        <StackLayout  x:Name="dayPicker" IsVisible="true">
+            <Picker  x:Name = "DayPicker" 
+                     Title="День недели"  
+                     SelectedIndex="{Binding DayOfTheWeek}">
                 <Picker.Items>
+                    <x:String>Воскресенье</x:String>
                     <x:String>Понедельник</x:String>
                     <x:String>Вторник</x:String>
                     <x:String>Среда</x:String>
                     <x:String>Четверг</x:String>
                     <x:String>Пятница</x:String>
                     <x:String>Суббота</x:String>
-                    <x:String>Воскресенье</x:String>
                 </Picker.Items>
             </Picker>
         </StackLayout>
 
-        <StackLayout Orientation="Horizontal">
-            <Label Text="Сделать запланированную запись"/>
-            <Switch x:Name="itsSpecialNote" IsToggled="False"></Switch>
-        </StackLayout>
 
-        <StackLayout IsVisible = "{Binding Source={x:Reference itsSpecialNote}, Path=IsToggled}">
+        <StackLayout x:Name="datePicker" IsVisible="false">
             <StackLayout>
-                <DatePicker x:Name="DateOfTasc"></DatePicker>
+                <DatePicker x:Name="DateOfTasc" Date="{Binding DateOfNote}"></DatePicker>
             </StackLayout>
         </StackLayout>
 

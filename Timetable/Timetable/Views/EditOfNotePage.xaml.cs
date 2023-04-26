@@ -27,21 +27,15 @@ namespace Timetable.Views
         {
             Note todoItem = (Note)BindingContext;
 
-            todoItem.StartTime = DateTime.MinValue + StartTimePicker.Time;
-            todoItem.EndTime = DateTime.MinValue + EndTimePicker.Time;
+            todoItem.StartTime = todoItem.StartTime;
+            todoItem.EndTime = todoItem.EndTime;
             todoItem.StringStartTime = todoItem.StartTime.ToShortTimeString();
-
             todoItem.StringEndTime = todoItem.EndTime.ToShortTimeString();
-            todoItem.DayOfTheWeek = (DayPicker.SelectedIndex + 1) % 7 ;
 
-            todoItem.Text = NoteText.Text;
-
-            todoItem.WithТotice = WithТotice.IsToggled;
-
-            //!!!!!!!!!!!!!!!!!!!!
-            todoItem.IsDelayed = itsSpecialNote.IsToggled;
-
-            todoItem.DateOfNote = DateOfTasc.Date;
+            if (itsSpecialNote.IsToggled)
+            {
+                todoItem.DayOfTheWeek = (int)todoItem.DateOfNote.DayOfWeek;
+            }
 
             NotesDB database = await NotesDB.Instance;
             await database.SaveItemAsync(todoItem);
@@ -63,14 +57,22 @@ namespace Timetable.Views
 
         protected override void OnBindingContextChanged()
         {
-           
+
             Note todoItem = (Note)BindingContext;
             //!!!!!!!!!!!!!!!!!!!!!!!!!!
             if (todoItem.StartTime != null)
             {
-                DayPicker.SelectedIndex = todoItem.DayOfTheWeek -1;
-                NoteText.Text = todoItem.Text;
+                TimeSpan timeSpan = new TimeSpan(todoItem.EndTime.Ticks);
+                EndTimePicker.Time = timeSpan;
+                timeSpan = new TimeSpan(todoItem.StartTime.Ticks);
+                StartTimePicker.Time = timeSpan;
             }
+        }
+
+        private void ChangedTypeOfNote(object sender, ToggledEventArgs e)
+        {
+                dayPicker.IsVisible = !itsSpecialNote.IsToggled;
+                datePicker.IsVisible = itsSpecialNote.IsToggled;
         }
     }
 }
