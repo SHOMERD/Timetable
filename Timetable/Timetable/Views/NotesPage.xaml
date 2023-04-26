@@ -49,10 +49,16 @@
                             <Label Text="{Binding Text}"
                                VerticalTextAlignment="Center"
                                HorizontalOptions="StartAndExpand" />
-                            <Label Text="{Binding StringStartTime}"
-                               VerticalTextAlignment="Center"
-                               HorizontalOptions="End"/>
-                        </StackLayout>
+                            <StackLayout Orientation ="Horizontal">
+                                <Label Text="{Binding StringStartTime}"
+                                VerticalTextAlignment="Center"
+                                HorizontalOptions="Center"/>
+                                <Label Text="-"/>
+                                <Label Text="{Binding StringEndTime}"
+                                VerticalTextAlignment="Center"
+                                HorizontalOptions="Center"/>
+                            </StackLayout>
+                    </StackLayout>
                     </StackLayout>
                 </ViewCell>
             </DataTemplate>

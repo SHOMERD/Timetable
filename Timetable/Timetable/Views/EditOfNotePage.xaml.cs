@@ -41,6 +41,7 @@ namespace Timetable.Views
             //!!!!!!!!!!!!!!!!!!!!
             todoItem.IsDelayed = itsSpecialNote.IsToggled;
 
+            todoItem.DateOfNote = DateOfTasc.Date;
 
             NotesDB database = await NotesDB.Instance;
             await database.SaveItemAsync(todoItem);
@@ -67,7 +68,7 @@ namespace Timetable.Views
             //!!!!!!!!!!!!!!!!!!!!!!!!!!
             if (todoItem.StartTime != null)
             {
-                DayPicker.SelectedIndex = todoItem.DayOfTheWeek;
+                DayPicker.SelectedIndex = todoItem.DayOfTheWeek -1;
                 NoteText.Text = todoItem.Text;
             }
         }

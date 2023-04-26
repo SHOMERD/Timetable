@@ -45,7 +45,7 @@ namespace Timetable.Views
                     break;
             }
             NotesDB database = await NotesDB.Instance;
-            listView.ItemsSource = await database.GetDailyItemsAsync(DayOfTheWeek);
+            listView.ItemsSource = await database.SortingPendingNotes(DayOfTheWeek);
         }
 
         async void OnItemAdded(object sender, EventArgs e)
@@ -88,10 +88,6 @@ namespace Timetable.Views
             OnAppearing();
         }
 
-        //async void ShouAllDays(object sender, EventArgs e)
-        //{
-        // await Navigation.PushAsync(new NotesPage(DayOfTheWeek++));
-        //}
 
     }
 }

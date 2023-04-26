@@ -10,7 +10,7 @@
         <Label Text=" "/>
         <Switch x:Name="WithТotice" IsToggled="False"></Switch>
         <Label Text=" "/>
-        <TimePicker x:Name="StartTimePicker" Time="22:00:00" ></TimePicker>
+        <TimePicker x:Name="StartTimePicker" Time="10:00:00" ></TimePicker>
         <Label Text=" " />
         <Label Text=" "/>
         <TimePicker x:Name="EndTimePicker" Time="22:00:00" ></TimePicker>
