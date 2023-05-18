@@ -36,7 +36,7 @@ namespace Timetable.Data
         public Task<List<Note>> GetDailyItemsAsync(int Day)
         {
             Day = DayCarousel(Day);
-            return Database.QueryAsync<Note>($"SELECT * FROM Note WHERE DayOfTheWeek = ?  ORDER BY StringStartTime", Day);
+            return Database.QueryAsync<Note>($"SELECT * FROM Note WHERE DayOfTheWeek = ?  ORDER BY TimeString", Day);
         }
 
         public Task<List<Note>> GetDelayedItemsAsync()
@@ -54,7 +54,7 @@ namespace Timetable.Data
             {
                 if (result[i].IsDelayed)
                 {
-                    DateTime dateTime = DateTime.Now.AddDays(14);;
+                    DateTime dateTime = DateTime.Now.AddDays(14);
                     if (result[i].DateOfNote >= dateTime)
                     {
                         result.RemoveAt(i);

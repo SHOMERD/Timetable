@@ -50,11 +50,7 @@
                                VerticalTextAlignment="Center"
                                HorizontalOptions="StartAndExpand" />
                             <StackLayout Orientation ="Horizontal">
-                                <Label Text="{Binding StringStartTime}"
-                                VerticalTextAlignment="Center"
-                                HorizontalOptions="Center"/>
-                                <Label Text="-"/>
-                                <Label Text="{Binding StringEndTime}"
+                                <Label Text="{Binding TimeString}"
                                 VerticalTextAlignment="Center"
                                 HorizontalOptions="Center"/>
                             </StackLayout>
