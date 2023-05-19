@@ -8,7 +8,7 @@
         <Entry  x:Name="NoteText"
                 Text="{Binding Text}" />
         <Label Text=" "/>
-        <StackLayout Orientation="Horizontal">
+        <StackLayout Orientation="Horizontal" IsVisible="false" >
             <Label Text="Включить уведомления"/>
             <Switch x:Name="WithТotice" IsToggled="{Binding WithТotice}" HorizontalOptions="EndAndExpand" ></Switch>
         </StackLayout>
