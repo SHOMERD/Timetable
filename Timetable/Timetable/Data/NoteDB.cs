@@ -29,7 +29,6 @@ namespace Timetable.Data
         public Task<List<Note>> GetItemsAsync()
         {
             Task<List<Note>> f = Database.Table<Note>().ToListAsync();
-            Console.WriteLine(f);
             return f;
         }
 

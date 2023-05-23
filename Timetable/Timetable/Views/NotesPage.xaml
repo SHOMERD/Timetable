@@ -2,43 +2,30 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Timetable.Views.NotesPage">
-    
 
 
-    <NavigationPage.TitleView>
-        <StackLayout Orientation="Horizontal">
 
-            <Button Text="❮"
-                   HorizontalOptions="StartAndExpand"
-                   VerticalOptions="CenterAndExpand"
-                   FontSize="20"
-                    Background="Transparent"
-                    Clicked="LastDay"/>
+    <ContentPage.ToolbarItems>
 
-            <Button x:Name="Day"
+        <ToolbarItem x:Name="Day"
                     Text="Чтото работает неправельно" 
-                   HorizontalOptions="CenterAndExpand"
-                   VerticalOptions="CenterAndExpand"
-                   FontSize="20"
-                    Background="Transparent"
+                     />
+        <ToolbarItem/>
+
+        <ToolbarItem Text="❮O❯"
+                    Clicked="ShouAll"/>
+
+
+        <ToolbarItem Text="+"
                     Clicked="OnItemAdded"/>
+    </ContentPage.ToolbarItems>
 
-            <Button Text="❯"
-                    HorizontalOptions="EndAndExpand"
-                    VerticalOptions="CenterAndExpand"
-                    FontSize="20"
-                    Background="Transparent"
-                    Clicked="NextDay"/>
-            
-        </StackLayout>
-    </NavigationPage.TitleView>
 
-    
-    
+
     <ListView x:Name="listView"
               Margin="20"
-              ItemSelected="OnListItemSelected"
-              >
+              ItemSelected="OnListItemSelected">
+        
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>

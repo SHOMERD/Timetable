@@ -8,11 +8,11 @@ namespace Timetable.Views
     public partial class NotesPage : ContentPage
     {
         public int DayOfTheWeek;
-        public bool ShouAll;
+        public bool CanShouAll;
 
         public NotesPage(int l = 0, bool ShouAll = false)
         {
-            this.ShouAll = ShouAll;
+            this.CanShouAll = ShouAll;
             DayOfTheWeek = l;
             
             InitializeComponent();
@@ -45,7 +45,15 @@ namespace Timetable.Views
                     break;
             }
             NotesDB database = await NotesDB.Instance;
-            listView.ItemsSource = await database.SortingPendingNotes(DayOfTheWeek);
+            if (CanShouAll)
+            {
+                listView.ItemsSource = await database.GetItemsAsync();
+            }
+            else
+            {
+                listView.ItemsSource = await database.SortingPendingNotes(DayOfTheWeek);
+            }
+            
         }
 
         async void OnItemAdded(object sender, EventArgs e)
@@ -54,6 +62,11 @@ namespace Timetable.Views
             {
                 BindingContext = new Note()
             });
+        }
+
+        async void ShouAll(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new NotesPage(0, true));
         }
 
         async void OnListItemSelected(object sender, SelectedItemChangedEventArgs e)
@@ -87,7 +100,6 @@ namespace Timetable.Views
             DayOfTheWeek = (DayOfTheWeek + 7) % 7;
             OnAppearing();
         }
-
 
     }
 }

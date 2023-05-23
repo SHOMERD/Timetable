@@ -16,5 +16,13 @@ namespace Timetable.Views.BufferPages
         {
             InitializeComponent();
         }
+        protected override void OnAppearing()
+        {
+            CarouselPage CP = Parent as CarouselPage;
+            NotesPage NP = CP.Children[1] as NotesPage;
+            NP.ChangeDay(-1);
+            CP.CurrentPage = CP.Children[1];
+        }
+
     }
 }
