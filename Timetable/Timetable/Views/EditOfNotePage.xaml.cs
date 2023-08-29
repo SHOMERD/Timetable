@@ -20,7 +20,6 @@ namespace Timetable.Views
         public EditOfNotePage()
         {
             InitializeComponent();
-           
         }
 
         async void OnSaveClicked(object sender, EventArgs e)
@@ -40,7 +39,7 @@ namespace Timetable.Views
 
             if (itsSpecialNote.IsToggled)
             {
-                todoItem.DayOfTheWeek = (int)todoItem.DateOfNote.DayOfWeek;
+                todoItem.DayOfTheWeek = (int)todoItem.DateOfNote.DayOfWeek + 1;
                 todoItem.TimeString = todoItem.StartTime.ToShortTimeString() + " " + todoItem.DateOfNote.ToShortDateString();
             }
             else
@@ -84,8 +83,15 @@ namespace Timetable.Views
                 DateOfTasc.Date = todoItem.DateOfNote;
 
                 NoteText.Text = todoItem.Text;
+                DayPicker.SelectedIndex = (todoItem.DayOfTheWeek - 1) % 7;
 
-                DayPicker.SelectedIndex = (todoItem.DayOfTheWeek -1) % 7;
+            }
+            else
+            {
+                EndTimePicker.Time = DateTime.Now.AddMinutes((60 - DateTime.Now.Minute)+60).TimeOfDay;
+                StartTimePicker.Time = DateTime.Now.AddMinutes(60 - DateTime.Now.Minute).TimeOfDay;
+                DateOfTasc.Date = DateTime.Now.Date;
+                DayPicker.SelectedIndex = (int)DateTime.Now.DayOfWeek;
 
             }
         }
