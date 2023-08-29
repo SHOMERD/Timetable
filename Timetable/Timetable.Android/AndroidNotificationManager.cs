@@ -54,7 +54,7 @@ namespace Timetable.Droid
                 intent.PutExtra(TitleKey, title);
                 intent.PutExtra(MessageKey, message);
 
-                PendingIntent pendingIntent = PendingIntent.GetBroadcast(AndroidApp.Context, pendingIntentId++, intent, PendingIntentFlags.CancelCurrent);
+                PendingIntent pendingIntent = PendingIntent.GetBroadcast(AndroidApp.Context, pendingIntentId++, intent, PendingIntentFlags.Immutable);
                 long triggerTime = GetNotifyTime(notifyTime.Value);
                 AlarmManager alarmManager = AndroidApp.Context.GetSystemService(Context.AlarmService) as AlarmManager;
                 alarmManager.Set(AlarmType.RtcWakeup, triggerTime, pendingIntent);
@@ -81,7 +81,7 @@ namespace Timetable.Droid
             intent.PutExtra(TitleKey, title);
             intent.PutExtra(MessageKey, message);
 
-            PendingIntent pendingIntent = PendingIntent.GetActivity(AndroidApp.Context, pendingIntentId++, intent, PendingIntentFlags.UpdateCurrent);
+            PendingIntent pendingIntent = PendingIntent.GetActivity(AndroidApp.Context, pendingIntentId++, intent, PendingIntentFlags.Immutable);
 
             NotificationCompat.Builder builder = new NotificationCompat.Builder(AndroidApp.Context, channelId)
                 .SetContentIntent(pendingIntent)
@@ -98,7 +98,7 @@ namespace Timetable.Droid
         public void DeleteNotification(int id)
         {
             Intent intent = new Intent(AndroidApp.Context, typeof(AlarmHandler));
-            PendingIntent pendingIntent = PendingIntent.GetBroadcast(AndroidApp.Context, id, intent, PendingIntentFlags.CancelCurrent);
+            PendingIntent pendingIntent = PendingIntent.GetBroadcast(AndroidApp.Context, id, intent, PendingIntentFlags.Immutable);
             AlarmManager alarmManager = AndroidApp.Context.GetSystemService(Context.AlarmService) as AlarmManager;
             alarmManager.Cancel(pendingIntent);
         }

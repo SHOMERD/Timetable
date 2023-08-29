@@ -1,18 +1,15 @@
 ﻿using Android.App;
 using Android.Content;
 using Android.Content.PM;
-using Android.OS;
+using System;
 using Android.Runtime;
+using Android.OS;
 using Timetable.Data;
 using Xamarin.Forms;
 
 namespace Timetable.Droid
 {
-    [Activity(Label = "Timetable",
-        Icon = "@mipmap/icon",
-        Theme = "@style/MainTheme",
-        MainLauncher = true,
-        ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize)]
+    [Activity(Label = "Timetable", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)
@@ -24,12 +21,6 @@ namespace Timetable.Droid
             LoadApplication(new App());
 
             CreateNotificationFromIntent(Intent);
-        }
-        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
-        {
-            Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-
-            base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
 
         protected override void OnNewIntent(Intent intent)
@@ -46,6 +37,13 @@ namespace Timetable.Droid
 
                 DependencyService.Get<INotificationManager>().ReceiveNotification(title, message);
             }
+        }
+
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
+        {
+            Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+
+            base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Timetable.Models
+namespace Timetable
 {
     public class NotificationEventArgs : EventArgs
     {
