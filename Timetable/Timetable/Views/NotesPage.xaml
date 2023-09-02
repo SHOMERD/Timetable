@@ -9,11 +9,11 @@
 
         <ToolbarItem x:Name="Day"
                     Text="Чтото работает неправельно"
-                     Clicked="Day_Clicked"
                      />
         <ToolbarItem/>
 
         <ToolbarItem Text="❮O❯"
+                    
                     Clicked="ShouAll"/>
 
 

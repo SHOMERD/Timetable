@@ -4,21 +4,32 @@ using Android.Content.PM;
 using System;
 using Android.Runtime;
 using Android.OS;
-using Timetable.Data;
 using Xamarin.Forms;
+using Timetable.Models;
 
 namespace Timetable.Droid
 {
     [Activity(Label = "Timetable", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
+
+        INotificationManager notificationManager;
+        NotificationNoteHandler notificationNoteHandler;
+
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
+
             base.OnCreate(savedInstanceState);
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
+
+            DependencyService.Get<INotificationManager>().Initialize();
+
+            notificationManager = DependencyService.Get<INotificationManager>();
+            notificationNoteHandler = new NotificationNoteHandler(notificationManager);
 
             CreateNotificationFromIntent(Intent);
         }
@@ -45,5 +56,9 @@ namespace Timetable.Droid
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
+
+        
+
     }
+
 }

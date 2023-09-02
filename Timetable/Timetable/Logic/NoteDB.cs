@@ -43,6 +43,10 @@ namespace Timetable.Data
             return Database.QueryAsync<Note>($"SELECT * FROM Note WHERE IsDelayed = ?  ORDER BY DateOfNote", true); 
         }
 
+        public Task<List<Note>> GetItemsWithТoticeAsync()
+        {
+            return Database.QueryAsync<Note>($"SELECT * FROM Note WHERE WithТotice = ?", true);
+        }
 
         public async Task<List<Note>> SortingPendingNotes(int Day)
         {

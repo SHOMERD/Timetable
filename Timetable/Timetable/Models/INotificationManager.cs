@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Timetable.Data
+namespace Timetable.Models
 {
     public interface INotificationManager
     {

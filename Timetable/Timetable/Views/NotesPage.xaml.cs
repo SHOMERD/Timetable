@@ -10,7 +10,7 @@ namespace Timetable.Views
         public int DayOfTheWeek;
         public bool CanShouAll;
 
-        INotificationManager notificationManager;
+        //INotificationManager notificationManager;
 
         public NotesPage(int l = 0, bool ShouAll = false)
         {
@@ -103,51 +103,6 @@ namespace Timetable.Views
             OnAppearing();
         }
 
-        private void Day_Clicked(object sender, EventArgs e)
-        {
-            Day_Cli();
-        }
 
-
-        private void Day_Cli()
-        {
-           
-
-            DependencyService.Get<INotificationManager>().Initialize();
-
-            notificationManager = DependencyService.Get<INotificationManager>();
-            notificationManager.NotificationReceived += (sender, eventArgs) =>
-            {
-                var evtData = (NotificationEventArgs)eventArgs;
-                ShowNotification(evtData.Title, evtData.Message);
-            };
-            
-             notificationManager.SendNotification("title", "message");
-        }
-        void OnSendClick(object sender, EventArgs e)
-        {
-            string title = $"Local Notification #";
-            string message = $"You have now received  notifications!";
-            notificationManager.SendNotification(title, message);
-        }
-
-        void OnScheduleClick(object sender, EventArgs e)
-        {
-            string title = $"Local Notification #";
-            string message = $"You have now received  notifications!";
-            notificationManager.SendNotification(title, message, DateTime.Now.AddSeconds(10));
-        }
-
-        void ShowNotification(string title, string message)
-        {
-            Device.BeginInvokeOnMainThread(() =>
-            {
-                var msg = new Label()
-                {
-                    Text = $"Notification Received:\nTitle: {title}\nMessage: {message}"
-                };
-
-            });
-        }
     }
 }
